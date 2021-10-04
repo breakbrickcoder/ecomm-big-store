@@ -27,36 +27,7 @@
     
     </div><!-- /.carousel -->
 
-<!--content-->
-<div class="kic-top ">
-	<div class="container ">
-	<div class="kic ">
-			<h3>Popular Categories</h3>
-			
-		</div>
-		<div class="col-md-4 kic-top1">
-			<a href="single.html">
-				<img src="images/ki.jpg" class="img-responsive" alt="">
-			</a>
-			<h6>Dal</h6>
-			<p>Nam libero tempore</p>
-		</div>
-		<div class="col-md-4 kic-top1">
-			<a href="single.html">
-				<img src="images/ki1.jpg" class="img-responsive" alt="">
-			</a>
-			<h6>Snacks</h6>
-			<p>Nam libero tempore</p>
-		</div>
-		<div class="col-md-4 kic-top1">
-			<a href="single.html">
-				<img src="images/ki2.jpg" class="img-responsive" alt="">
-			</a>
-			<h6>Spice</h6>
-			<p>Nam libero tempore</p>
-		</div>
-	</div>
-</div>
+
 
 <!--content-->
 		<div class="product">
@@ -75,17 +46,25 @@
 							<div class="col-md-3 pro-1">
 								<div class="col-m">
 								<a href="#" data-toggle="modal" data-target="#myModal1" class="offer-img">
-										<img src="images/of24.png" class="img-responsive" alt="">
+										<img src="{{sub.image.url}}" class="img-responsive" alt="">
 									</a>
 									<div class="mid-1">
 										<div class="women">
-											<h6><a href="single.html">{{sub.title}}</a>(500 g)</h6>							
+											<h6><a href="single.html">{{sub.title}}</h6>							
 										</div>
 										<div class="mid-2">
-											<p ><label>$7.00</label><em class="item_price">$6.00</em></p>
+											{% if sub.discounted_price %}
+											<p ><label>${{sub.price}}</label><em class="item_price">${{ sub.discouted_price }}</em></p>
 											  <div class="block">
 												<div class="starbox small ghosting"> </div>
 											</div>
+											{% else %}
+											<p ><em class="item_price">${{sub.price}}</em></p>
+											  <div class="block">
+												<div class="starbox small ghosting"> </div>
+											</div>
+											{% endif %}
+
 											<div class="clearfix"></div>
 										</div>
 											<div class="add">
