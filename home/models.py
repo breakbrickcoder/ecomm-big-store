@@ -22,6 +22,7 @@ class Subcategory(models.Model):
 	image = models.ImageField(upload_to = 'media')
 	def __str__(self):
 		return self.title
+		
 	def get_subcat_url(self):
 		return reverse ('home:subcategory',kwargs = {'slug':self.slug})
 
