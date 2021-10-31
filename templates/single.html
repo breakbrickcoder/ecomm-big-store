@@ -34,8 +34,8 @@
 				<h3>{{detail.title}}</h3>
 				
 					
-				 {% if detail.discounted_price %}
-											<p ><label>${{detail.price}}</label><em class="item_price">${{ detail.discouted_price }}</em></p>
+				 							{% if detail.discounted_price %}
+											<p ><label>${{detail.price}}</label><em class="item_price">${{ detail.discounted_price }}</em></p>
 											  <div class="block">
 												<div class="starbox small ghosting"> </div>
 											</div>
@@ -101,7 +101,7 @@
 										</div>
 										<div class="mid-2">
 											{% if hot.discounted_price %}
-											<p ><label>${{hot.price}}</label><em class="item_price">${{hot.discouted_price}}</em></p>
+											<p ><label>${{hot.price}}</label><em class="item_price">${{hot.discounted_price}}</em></p>
 											  <div class="block">
 												<div class="starbox small ghosting"> </div>
 											</div>

@@ -6,3 +6,37 @@ class CartView(BaseView):
 	def get(self,request):
 		self.views['carts'] = Cart.objects.filter(user = request.user,checkout = False)
 		return render(request,'wishlist.html',self.views)
+
+def cart(request,slug):
+	if Cart.objects.filter(slug = slug).exists():
+		quantity = Cart.objects.get(slug = slug).quantity
+		quantity = quantity +1
+		Cart.objects.filter(slug = slug).update(quantity = quantity)
+	else:
+		username = request.user
+		data = Cart.objects.create(
+			user = username,
+			slug = slug,
+			items = Item.objects.get(slug = slug)
+			)
+		data.save()
+	return redirect('/cart/')
+
+def removecart(request,slug):
+	if Cart.objects.filter(slug = slug, user = request.user,checkout = False).exists():
+		quantity = Cart.objects.get(slug = slug).quantity
+		if quantity > 1:
+			quantity = -1
+			Cart.objects.filter(slug = slug,user = request.user,checkout = False).update(quantity = quantity)
+		else:
+			pass
+	return redirect('/cart/')
+
+def deletecart(request,slug):
+	if Cart.objects.filter(slug = slug, user = request.user,checkout = False).exists():
+		Cart.objects.filter(slug = slug, user = request.user, checkout = False).delete()
+	else:
+		pass
+
+	return redirect('/cart/')
+
